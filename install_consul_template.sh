@@ -11,9 +11,6 @@ scp -r * $addr:/opt
 
 FILE=/tmp/bootstrap.lock
 
-test -f $FILE || ssh $addr "cd /opt && bash bootstrap.sh"
-
-touch /tmp/bootstrap.lock
-
+test -f $FILE || ssh $addr "cd /opt && bash bootstrap.sh" && touch /tmp/bootstrap.lock
 
 ssh $addr "cd /opt && bash consul-template.sh"
