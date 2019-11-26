@@ -14,6 +14,7 @@ cp /usr/local/openresty/nginx/conf/nginx.conf /tmp/
 rm -rf /usr/local/openresty/nginx/conf/nginx.conf
 cp nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 cp upstream.conf /usr/local/openresty/nginx/conf/
+cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
@@ -23,6 +24,9 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty
 
 systemctl status openresty && systemctl enable openresty && systemctl start openresty
 
+firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --reload
 
 #/usr/local/openresty/nginx/conf/
 #certbot --nginx
