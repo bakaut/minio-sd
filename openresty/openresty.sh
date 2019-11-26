@@ -28,8 +28,12 @@ firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 
+export PATH=ATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/openresty/nginx/sbin/
+mkdir /etc/nginx/
+ln -s /usr/local/openresty/nginx/conf/nginx.conf  /etc/nginx/nginx.conf
+
 #/usr/local/openresty/nginx/conf/
 #certbot --nginx
-#sudo certbot --nginx -d example.com -d www.example.com
+#sudo certbot --nginx -d s3.storage.ru
 #certbot certonly --nginx
 #echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew" | sudo tee -a /etc/crontab > /dev/null

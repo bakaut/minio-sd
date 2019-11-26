@@ -11,6 +11,7 @@ touch /etc/default/minio
 
 curl -O https://dl.minio.io/server/minio/release/linux-amd64/minio
 chmod +x minio
+setcap 'cap_net_bind_service=+ep' ./minio
 mv minio /usr/local/bin
 
 curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
