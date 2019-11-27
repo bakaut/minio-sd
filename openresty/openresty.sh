@@ -32,6 +32,8 @@ export PATH=ATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr
 mkdir /etc/nginx/
 ln -s /usr/local/openresty/nginx/conf/nginx.conf  /etc/nginx/nginx.conf
 
+sudo certbot --nginx -d s3.storage.ru
+
 #/usr/local/openresty/nginx/conf/
 #certbot --nginx
 #sudo certbot --nginx -d s3.storage.ru
