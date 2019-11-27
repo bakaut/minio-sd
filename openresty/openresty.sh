@@ -28,11 +28,11 @@ firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 
-export PATH=ATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/openresty/nginx/sbin/
-mkdir /etc/nginx/
-ln -s /usr/local/openresty/nginx/conf/nginx.conf  /etc/nginx/nginx.conf
+#export PATH=ATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/openresty/nginx/sbin/
+#mkdir /etc/nginx/
+#ln -s /usr/local/openresty/nginx/conf/nginx.conf  /etc/nginx/nginx.conf
 
-sudo certbot --nginx -d s3.storage.ru
+#sudo certbot --nginx -d s3.storage.ru
 
 #/usr/local/openresty/nginx/conf/
 #certbot --nginx

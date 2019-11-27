@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp minio-config.hcl /etc/consul-template/
+cp or-config.hcl /etc/consul-template/
 
-cp minio-config.ctmpl /etc/consul-template/
+cp or-config.ctmpl /etc/consul-template/
 
-cp minio-reloader.service /etc/systemd/system/minio-reloader.service
+cp or-reloader.service /etc/systemd/system/or-reloader.service
 
-systemctl daemon-reload && systemctl enable minio-reloader && systemctl start minio-reloader && systemctl status minio-reloader
+systemctl daemon-reload && systemctl enable or-reloader && systemctl start or-reloader && systemctl status or-reloader
