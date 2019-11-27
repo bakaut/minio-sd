@@ -27,7 +27,7 @@
   "ui": true,
   "bootstrap": false,
   "client_addr": "0.0.0.0",
-  "advertise_addr": "to_replace",
+  "advertise_addr": "192.168.1.233",
   "recursors" : [ "192.168.1.1" ],
   "ports" : {
       "dns" : 53

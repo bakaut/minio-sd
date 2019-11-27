@@ -33,11 +33,15 @@ cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/
 
 consul validate /etc/consul/consul.json || true
 
+setcap "cap_net_bind_service=+ep" /bin/consul
+
 systemctl daemon-reload && systemctl enable consul && systemctl start consul && systemctl status consul
 
-setcap "cap_net_bind_service=+ep" /bin/consul
 nmcli connection modify ens33  ipv4.dns-search consul
 #preroute for dns
+
+mkdir /etc/consul-template
+chown -R consul:consul /etc/consul-template
 
 firewall-cmd --permanent --zone=public --add-port=8300/tcp
 firewall-cmd --permanent --zone=public --add-port=8301/tcp
