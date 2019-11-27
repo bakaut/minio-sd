@@ -29,9 +29,6 @@ cp consul.json /etc/consul/consul.json && chown consul:consul /etc/consul/consul
 
 cp consul.service /etc/systemd/system/consul.service
 
-cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/minio.json
-
-consul validate /etc/consul/consul.json || true
 
 setcap "cap_net_bind_service=+ep" /bin/consul
 

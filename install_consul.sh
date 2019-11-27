@@ -8,8 +8,6 @@ addr=$1
 
 cd consul
 
-sed -i "s/to_replace/$addr/g" consul.json
-
 scp -r * $addr:/opt || true
 
 ssh $addr "cd /opt && bash consul.sh" || true

@@ -27,6 +27,9 @@ cp minio.service /etc/systemd/system/minio.service
 
 systemctl daemon-reload && systemctl enable minio && systemctl start minio && systemctl status minio
 
+cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/minio.json
+
+systemctl restart consul && systemctl status consul
 
 firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload
