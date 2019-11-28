@@ -31,5 +31,9 @@ cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/
 
 systemctl restart consul && systemctl status consul
 
+mkdir /etc/sysctl.d || true
+cp sysctl.conf /etc/sysctl.d/01-minio.conf 
+sysctl -p /etc/sysctl.d/01-minio.conf
+
 firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload
