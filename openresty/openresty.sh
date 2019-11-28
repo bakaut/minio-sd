@@ -17,7 +17,9 @@ cp upstream.conf /usr/local/openresty/nginx/conf/
 cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
+#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
+#self signed sert
+openssl req -new -key /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=s3.storage.ru"
 
 /usr/local/openresty/nginx/sbin/nginx -t
 

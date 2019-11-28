@@ -16,7 +16,7 @@ chmod +x mc
 mv mc /usr/local/bin
 
 
-chown -R minio:minio /usr/local/share/minio /etc/minio /etc/minio/minio.conf /usr/local/bin/mc /usr/local/bin/minio
+chown -R minio:minio /etc/minio /etc/minio/minio.conf /usr/local/bin/mc /usr/local/bin/minio /opt/data
 
 cp minio.conf /etc/minio/minio.conf
 
@@ -31,9 +31,9 @@ cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/
 
 systemctl restart consul && systemctl status consul
 
-mkdir /etc/sysctl.d || true
-cp sysctl.conf /etc/sysctl.d/01-minio.conf 
-sysctl -p /etc/sysctl.d/01-minio.conf
+#ls /etc/sysctl.d || mkdir /etc/sysctl.d
+#cp sysctl.conf /etc/sysctl.d/01-minio.conf 
+#sysctl -p /etc/sysctl.d/01-minio.conf 
 
 firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload
