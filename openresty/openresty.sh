@@ -19,7 +19,10 @@ cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 
 #openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
 #self signed sert
-openssl req -new -key /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=s3.storage.ru"
+#openssl req -new -key /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=teatr-stalker.ru"
+
+cp fullchain.pem /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
+cp privkey.pem /usr/local/openresty/nginx/conf/ssl/ssl-priv.key
 
 /usr/local/openresty/nginx/sbin/nginx -t
 
@@ -34,10 +37,10 @@ firewall-cmd --reload
 #mkdir /etc/nginx/
 #ln -s /usr/local/openresty/nginx/conf/nginx.conf  /etc/nginx/nginx.conf
 
-#sudo certbot --nginx -d s3.storage.ru
+#sudo certbot --nginx -d teatr-stalker.ru
 
 #/usr/local/openresty/nginx/conf/
 #certbot --nginx
-#sudo certbot --nginx -d s3.storage.ru
+#sudo certbot --nginx -d teatr-stalker.ru
 #certbot certonly --nginx
 #echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew" | sudo tee -a /etc/crontab > /dev/null
