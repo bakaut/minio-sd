@@ -2,6 +2,9 @@
 yum update -y
 yum install unzip wget bind-utils bind-libs -y
 
+PART=`ip addr | egrep -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | grep -v 127.0 | head -1 | cut -d . -f4`
+hostnamectl set-hostname "$PART".tlc.lan
+
 groupadd --system consul
 useradd -s /sbin/nologin --system -g consul consul
 
@@ -20,6 +23,9 @@ chmod +x consul-template
 chown consul:consul consul-template
 mv consul-template /bin/consul-template
 
+mv sockaddr /usr/local/bin
+chmod +x /usr/local/bin/sockaddr
+chown consul:consul /usr/local/bin/sockaddr
 
 mkdir -p /etc/consul /etc/consul/config.d /var/lib/consul/data
 
@@ -30,7 +36,7 @@ cp consul.json /etc/consul/consul.json && chown consul:consul /etc/consul/consul
 cp consul.service /etc/systemd/system/consul.service
 
 
-setcap "cap_net_bind_service=+ep" /bin/consul
+sudo setcap "cap_net_bind_service=+ep" /bin/consul
 
 systemctl daemon-reload && systemctl enable consul && systemctl start consul && systemctl status consul
 

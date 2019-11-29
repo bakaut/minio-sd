@@ -2,7 +2,7 @@
 
 cp or-config.hcl /etc/consul-template/
 
-cp or-config.ctmpl /etc/consul-template/
+cp or-*.ctmpl /etc/consul-template/
 
 cp or-reloader.service /etc/systemd/system/or-reloader.service
 

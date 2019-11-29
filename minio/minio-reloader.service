@@ -9,7 +9,7 @@ User=root
 Group=root
 LimitNOFILE=64000
 PermissionsStartOnly=true
-ExecStart=/bin/consul-template -syslog -wait 30s:120s -config=/etc/consul-template/minio-config.hcl
+ExecStart=/bin/consul-template -syslog -wait 60s:600s -config=/etc/consul-template/minio-config.hcl
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGINT
 
