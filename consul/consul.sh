@@ -8,15 +8,16 @@ hostnamectl set-hostname "$PART".tlc.lan
 groupadd --system consul
 useradd -s /sbin/nologin --system -g consul consul
 
-curl -O -k https://releases.hashicorp.com/consul/1.6.2/consul_1.6.2_linux_amd64.zip
-
+#curl -O -k https://releases.hashicorp.com/consul/1.6.2/consul_1.6.2_linux_amd64.zip
+curl -O http://192.168.1.100/consul_1.6.2_linux_amd64.zip
 unzip consul_1.6.2_linux_amd64.zip 
 rm -rf consul_1.6.2_linux_amd64.zip
 chmod +x consul
 chown consul:consul consul
 mv consul /bin/consul
 
-curl -O -k https://releases.hashicorp.com/consul-template/0.23.0/consul-template_0.23.0_linux_amd64.zip
+#curl -O -k https://releases.hashicorp.com/consul-template/0.23.0/consul-template_0.23.0_linux_amd64.zip
+curl -O http://192.168.1.100/consul-template_0.23.0_linux_amd64.zip
 unzip consul-template_0.23.0_linux_amd64.zip
 rm -rf consul-template_0.23.0_linux_amd64.zip
 chmod +x consul-template

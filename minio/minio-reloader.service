@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=consul
+Group=consul
 LimitNOFILE=64000
 PermissionsStartOnly=true
 ExecStart=/bin/consul-template -syslog -wait 60s:600s -config=/etc/consul-template/minio-config.hcl

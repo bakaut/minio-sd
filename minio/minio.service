@@ -16,9 +16,11 @@ PermissionsStartOnly=true
 StandardOutput=journal
 StandardError=inherit
 
-EnvironmentFile=/etc/minio/minio.conf
+EnvironmentFile=/home/minio/.minio/minio.conf
 
-ExecStart=/usr/local/bin/minio server $MINIO_OPTS $MINIO_DISTRIBUTED
+ExecStartPre=-/usr/bin/chown -R minio:consul /home/minio/.minio/
+
+ExecStart=/usr/local/bin/minio server --certs-dir $MINIO_SERT_DIR $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_SERVER_IP:$MINIO_SERVER_PORT $MINIO_DISTRIBUTED
 
 # Let systemd restart this service always
 Restart=always
