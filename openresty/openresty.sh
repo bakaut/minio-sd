@@ -24,6 +24,7 @@ cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 
 /usr/local/openresty/nginx/sbin/nginx -t
 
+consul-template -template "hosts.ctmpl:/etc/hosts" -once
 
 systemctl status openresty && systemctl enable openresty && systemctl start openresty
 

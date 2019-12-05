@@ -10,7 +10,7 @@
     "enable_tag_override": false,
     "checks": [
       {
-        "args": [ "/usr/bin/curl","https://127.0.0.1/minio/health/ready"],
+        "args": [ "/usr/bin/curl","-s","--head","https://127.0.0.1/minio/health/ready"],
         "interval": "10s"
       }
     ],
