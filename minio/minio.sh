@@ -25,7 +25,6 @@ sudo setcap cap_net_bind_service=+ep /usr/local/bin/minio
 
 mkdir -p /home/minio/.minio/certs/  /home/minio/.minio/certs/CAs/
 
-consul-template -once -config=/etc/consul-template/minio-config.hcl
 
 chown -R minio:consul /home/minio/.minio/
 chmod -R g+rw /home/minio/.minio/

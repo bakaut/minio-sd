@@ -1,9 +1,9 @@
 #!/bin/bash
 yum update -y
-yum install unzip wget bind-utils bind-libs -y
+yum install unzip wget bind-utils bind-libs nc -y
 
 PART=`ip addr | egrep -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | grep -v 127.0 | head -1 | cut -d . -f4`
-hostnamectl set-hostname "$PART".tlc.lan
+hostnamectl set-hostname "$PART".teatr-stalker.ru
 
 groupadd --system consul
 useradd -s /sbin/nologin --system -g consul consul

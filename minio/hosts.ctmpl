@@ -1,0 +1,4 @@
+{{ file "/etc/hosts" }}
+{{ range nodes }}
+{{ .Address }} {{ .Node }}
+{{ end }}

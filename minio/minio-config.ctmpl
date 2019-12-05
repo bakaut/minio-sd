@@ -1,2 +1,8 @@
-{{ range ls "MINIO/ENV" }}
-{{ .Key }}={{ .Value }}{{ end }}
+{{ range ls "MINIO/ENV" -}}
+{{ if eq .Key "MINIO_DOMAIN" }}
+{{ .Key }}="{{ range nodes }}{{- .Node }},{{ end -}}{{ key "MINIO/ENV/MINIO_FQDN_LB" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}"
+{{ else if eq .Key "MINIO_DNS" }}
+{{ .Key }}="{{with node}}{{.Node.Node}}:{{ key "MINIO/ENV/MINIO_PORT" }}"{{ end -}}
+{{ else }}
+{{ .Key }}={{ .Value }}{{ end -}}
+{{ end }}
