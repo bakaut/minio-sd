@@ -31,6 +31,8 @@ chmod -R g+rw /home/minio/.minio/
 
 systemctl daemon-reload && systemctl enable minio && systemctl start minio && systemctl status minio
 
+sed -i "s/127.0.0.1/`hostname`/g" minio.json
+
 cp minio.json /etc/consul/config.d/ && chown consul:consul /etc/consul/config.d/minio.json
 
 systemctl restart consul 
