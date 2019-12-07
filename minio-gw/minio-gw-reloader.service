@@ -1,0 +1,17 @@
+[Unit]
+Description=consul template reloader
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=consul
+Group=consul
+LimitNOFILE=64000
+PermissionsStartOnly=true
+ExecStart=/bin/consul-template -syslog -wait 60s:600s -config=/etc/consul-template/minio-gw-config.hcl
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

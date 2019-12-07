@@ -22,9 +22,9 @@ cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 #openssl req -new -key /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=teatr-stalker.ru"
 
 
-/usr/local/openresty/nginx/sbin/nginx -t
 
-consul-template -template "hosts.ctmpl:/etc/hosts" -once
+consul-template  -once -template "hosts.ctmpl:/etc/hosts"
+consul-template  -once -config=/etc/consul-template/or-config.hcl
 
 systemctl status openresty && systemctl enable openresty && systemctl start openresty
 
