@@ -18,9 +18,9 @@
 #for i in 51 52 53 54;do bash install_monitoring.sh 192.168.1.$i;done
 
 #install balancer
-#bash  install_consul.sh 192.168.1.20
-#bash  install_openresty.sh 192.168.1.20
+bash  install_consul.sh 192.168.1.20
+bash  install_openresty.sh 192.168.1.20
 
 #Install minio gateway
-bash install_consul.sh 192.168.1.25
-bash install_minio_gw.sh 192.168.1.25
+#bash install_consul.sh 192.168.1.25
+#bash install_minio_gw.sh 192.168.1.25
