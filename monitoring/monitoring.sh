@@ -11,3 +11,5 @@ pmm-admin add linux:metrics
 firewall-cmd --zone=public --add-port=42000/tcp --permanent
 firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --reload
+
+#./server_8080 /tmp/tmp.json
