@@ -1,9 +1,9 @@
-import asynchttpserver, asyncdispatch, json, asyncfile, os
+import asynchttpserver, asyncdispatch, json, asyncfile, os, strutils
 
 var server = newAsyncHttpServer()
 
 proc cb(req: Request) {.async.} =
-  var p = paramStr(1)
+  var p = paramStr(2)
   try:
     var file = openAsync($p, fmRead)
     file.setFilePos(0)
@@ -22,4 +22,4 @@ proc cb(req: Request) {.async.} =
     echo "Cannot open file ",$p
     sleep(1000)
 
-waitFor server.serve(Port(8080), cb)
+waitFor server.serve(Port(parseInt(paramStr(1))), cb)
