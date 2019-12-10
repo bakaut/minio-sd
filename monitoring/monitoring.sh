@@ -23,7 +23,10 @@ chown -R minio:consul /home/minio/.mc/
 
 systemctl daemon-reload && systemctl enable monitoring && systemctl start monitoring && systemctl status monitoring
 
-echo "* * * * * root su - minio -s /bin/bash -c \"mc admin  info  server current --json  > /home/minio/.minio/mon.json\"" >> /etc/crontab
+cp cron.sh /usr/local/bin
+chmod +x /usr/local/bin/cron.sh
+
+echo "* * * * * root /usr/local/bin/cron.sh" >> /etc/crontab
 
 firewall-cmd --zone=public --add-port=8080/tcp --permanent
 firewall-cmd --zone=public --add-port=42000/tcp --permanent
