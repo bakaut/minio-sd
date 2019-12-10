@@ -1,0 +1,33 @@
+Description=MinIO monitoring
+Documentation=https://docs.min.io
+Wants=minio.target
+After=minio.target
+
+[Service]
+WorkingDirectory=/usr/local/bin
+
+User=minio
+Group=minio
+
+PermissionsStartOnly=true
+
+StandardOutput=journal
+StandardError=inherit
+
+
+ExecStart=/usr/local/bin/server /home/minio/.minio/mon.json
+
+# Let systemd restart this service always
+Restart=always
+
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=65536
+
+# Disable timeout logic and wait until process is stopped
+TimeoutStopSec=0
+KillSignal=SIGTERM
+SendSIGKILL=no
+SuccessExitStatus=0
+
+[Install]
+WantedBy=multi-user.target
