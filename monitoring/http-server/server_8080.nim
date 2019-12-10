@@ -21,5 +21,7 @@ proc cb(req: Request) {.async.} =
     await req.respond(Http200, "Cannot open file " & $p)
     echo "Cannot open file ",$p
     sleep(1000)
-
-waitFor server.serve(Port(parseInt(paramStr(1))), cb)
+try:
+  waitFor server.serve(Port(parseInt(paramStr(1))), cb)
+except OSError:
+  echo getCurrentExceptionMsg()
