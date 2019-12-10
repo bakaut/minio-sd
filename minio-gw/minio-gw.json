@@ -6,11 +6,11 @@
       "meta": {
         "meta": "minio-gw"
       },
-      "port": 443,
+      "port": 9000,
       "enable_tag_override": false,
       "checks": [
         {
-          "args": [ "/usr/bin/curl","-s","--head","https://127.0.0.1/minio/health/ready"],
+          "args": [ "/usr/bin/curl","-s","--head","http://127.0.0.1:9000/minio/health/ready"],
           "interval": "10s"
         }
       ],

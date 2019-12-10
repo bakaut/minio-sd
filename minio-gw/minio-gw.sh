@@ -25,7 +25,7 @@ cp minio-gw.service /etc/systemd/system/minio-gw.service
 sudo setcap cap_net_bind_service=+ep /usr/local/bin/minio
 
 
-mkdir -p /home/minio/.minio/certs/  /home/minio/.minio/certs/CAs/
+mkdir -p /home/minio/.minio/
 
 
 chown -R minio:consul /home/minio/.minio/
@@ -58,7 +58,7 @@ systemctl restart minio-gw
 
 cp minio-gw-config.hcl /etc/consul-template/
 
-cp minio-*.ctmpl /etc/consul-template/ && chown -R consul:consul /etc/consul-template/
+cp *.ctmpl /etc/consul-template/ && chown -R consul:consul /etc/consul-template/
 
 
 consul-template -once -config=/etc/consul-template/minio-gw-config.hcl
@@ -75,7 +75,7 @@ systemctl daemon-reload && systemctl enable minio-gw-reloader && systemctl start
 
 
 
-firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload
 
 systemctl restart minio-gw

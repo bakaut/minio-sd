@@ -20,7 +20,7 @@ EnvironmentFile=/home/minio/.minio/minio.conf
 
 ExecStartPre=-/usr/bin/chown -R minio:consul /home/minio/.minio/
 
-ExecStart=/usr/local/bin/minio server --certs-dir $MINIO_SERT_DIR $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_DNS $MINIO_DISTRIBUTED
+ExecStart=/usr/local/bin/minio server $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_DNS $MINIO_DISTRIBUTED
 
 # Let systemd restart this service always
 Restart=always

@@ -15,7 +15,7 @@ StandardOutput=journal
 StandardError=inherit
 
 
-ExecStart=/usr/local/bin/server /home/minio/.minio/mon.json
+ExecStart=/usr/local/bin/server 8080 /home/minio/.minio/mon.json
 
 # Let systemd restart this service always
 Restart=always

@@ -23,7 +23,7 @@ cp minio.service /etc/systemd/system/minio.service
 
 sudo setcap cap_net_bind_service=+ep /usr/local/bin/minio
 
-mkdir -p /home/minio/.minio/certs/  /home/minio/.minio/certs/CAs/
+mkdir -p /home/minio/.minio/
 
 
 chown -R minio:consul /home/minio/.minio/
@@ -52,5 +52,5 @@ systemctl restart minio
 
 
 
-firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload

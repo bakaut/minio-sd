@@ -41,7 +41,7 @@ sudo setcap "cap_net_bind_service=+ep" /bin/consul
 
 systemctl daemon-reload && systemctl enable consul && systemctl start consul && systemctl status consul
 
-nmcli connection modify ens33  ipv4.dns-search consul
+#nmcli connection modify ens33  ipv4.dns-search consul
 #preroute for dns
 
 mkdir /etc/consul-template

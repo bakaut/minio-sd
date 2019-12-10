@@ -20,7 +20,7 @@ EnvironmentFile=/home/minio/.minio/minio-gw.conf
 
 ExecStartPre=-/usr/bin/chown -R minio:consul /home/minio/.minio/
 
-ExecStart=/usr/local/bin/minio gateway s3 --certs-dir $MINIO_SERT_DIR $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_GW_DNS $MINIO_ENDPOINT 
+ExecStart=/usr/local/bin/minio gateway s3 $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_GW_DNS $MINIO_ENDPOINT 
 
 # Let systemd restart this service always
 Restart=always

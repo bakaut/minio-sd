@@ -2,9 +2,11 @@
 
 cp or-config.hcl /etc/consul-template/
 
-cp or-*.ctmpl /etc/consul-template/
+cp *.ctmpl /etc/consul-template/
 
-cp hosts.ctmpl /etc/consul-template/
+curl --request PUT --data-binary @root-ca.crt http://127.0.0.1:8500/v1/kv/MINIO/SERT/ROOT || true
+curl --request PUT --data-binary @public.crt  http://127.0.0.1:8500/v1/kv/MINIO/SERT/PUB || true
+curl --request PUT --data-binary @private.key http://127.0.0.1:8500/v1/kv/MINIO/SERT/PRIV || true
 
 consul-template  -once -template "hosts.ctmpl:/etc/hosts"
 consul-template  -once -config=/etc/consul-template/or-config.hcl
