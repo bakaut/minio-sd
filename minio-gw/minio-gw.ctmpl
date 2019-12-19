@@ -1,2 +1,0 @@
-{{ range ls "MINIO/GW" }}
-{{ .Key }}={{ .Value }}{{ end }}

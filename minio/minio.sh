@@ -21,8 +21,6 @@ cp minio.conf /home/minio/.minio/minio.conf
 
 cp minio.service /etc/systemd/system/minio.service
 
-sudo setcap cap_net_bind_service=+ep /usr/local/bin/minio
-
 mkdir -p /home/minio/.minio/
 
 

@@ -1,8 +1,3 @@
 upstream minio_servers { {{range service "minio"}}
   server {{.Node}}:{{.Port}};{{end}}
 }
-upstream minio_gw {
-  ip_hash;
-  server {{ key "MINIO/ENV/MINIO_GW1_DNS" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}:{{ key "MINIO/GW/MINIO_GW_PORT" }};
-  server {{ key "MINIO/ENV/MINIO_GW2_DNS" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}:{{ key "MINIO/GW/MINIO_GW_PORT" }};
-}

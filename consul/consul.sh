@@ -24,9 +24,6 @@ chmod +x consul-template
 chown consul:consul consul-template
 mv consul-template /bin/consul-template
 
-mv sockaddr /usr/local/bin
-chmod +x /usr/local/bin/sockaddr
-chown consul:consul /usr/local/bin/sockaddr
 
 mkdir -p /etc/consul /etc/consul/config.d /var/lib/consul/data
 

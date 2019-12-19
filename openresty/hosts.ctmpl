@@ -3,7 +3,4 @@
 {{ range nodes }}
 {{ .Address }} {{ .Node }}
 {{ end }}
-{{ key "MINIO/ENV/MINIO_LB_IP" }} {{ key "MINIO/ENV/MINIO_LB_FQDN" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
-{{ key "MINIO/ENV/MINIO_REV_IP" }} {{ key "MINIO/ENV/MINIO_REV_FQDN" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
-{{ key "MINIO/ENV/MINIO_GW1_IP" }} {{ key "MINIO/ENV/MINIO_GW1_DNS" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
-{{ key "MINIO/ENV/MINIO_GW2_IP" }} {{ key "MINIO/ENV/MINIO_GW2_DNS" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
+{{ key "MINIO/ENV/MINIO_LB_IP" }} {{ key "MINIO/ENV/MINIO_LB_NAME" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
