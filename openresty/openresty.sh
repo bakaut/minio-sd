@@ -1,12 +1,12 @@
 #!/bin/bash
-yum update -y
-yum install -y yum-utils epel-release
-yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo
-yum update -y 
-yum install openresty openresty-resty -y
+#yum update -y
+#yum install -y yum-utils epel-release
+#yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo
+#yum update -y 
+#yum install openresty openresty-resty -y
 
-yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-yum install certbot python2-certbot-nginx -y
+#yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+#yum install certbot python2-certbot-nginx -y
 
 mkdir /usr/local/openresty/nginx/conf/conf.d /usr/local/openresty/nginx/conf/ssl
 cp s3.conf /usr/local/openresty/nginx/conf/conf.d/
@@ -14,7 +14,9 @@ cp /usr/local/openresty/nginx/conf/nginx.conf /tmp/
 rm -rf /usr/local/openresty/nginx/conf/nginx.conf
 cp nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 cp upstream.conf /usr/local/openresty/nginx/conf/
-
+cp proxy_cache_headers.conf /usr/local/openresty/nginx/conf/proxy_cache_headers.conf
+cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
+cp limit_req.conf /usr/local/openresty/nginx/conf/limit_req.conf
 
 #openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt
 #self signed sert
