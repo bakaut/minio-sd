@@ -4,3 +4,4 @@
 {{ .Address }} {{ .Node }}
 {{ end }}
 {{ key "MINIO/ENV/MINIO_LB_IP" }} {{ key "MINIO/ENV/MINIO_LB_NAME" }}.{{ key "MINIO/ENV/MINIO_FQDN" }}
+#managed by crontab, consul-template

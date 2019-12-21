@@ -11,6 +11,8 @@ curl --request PUT --data-binary @private.key http://127.0.0.1:8500/v1/kv/MINIO/
 consul-template  -once -template "hosts.ctmpl:/etc/hosts"
 consul-template  -once -config=/etc/consul-template/or-config.hcl
 
+echo "* * * * * root consul-template -template \"/etc/consul-template/hosts.ctmpl:/etc/hosts\" -once" >> /etc/crontab
+
 cp or-reloader.service /etc/systemd/system/or-reloader.service
 
 systemctl daemon-reload && systemctl enable or-reloader && systemctl start or-reloader && systemctl status or-reloader
