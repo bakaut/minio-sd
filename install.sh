@@ -16,3 +16,9 @@ for i in 51 52 53 54;do bash install_monitoring.sh 192.168.1.$i;done
 #install balancer
 #bash  install_consul.sh 192.168.1.20
 bash  install_openresty.sh 192.168.1.20
+
+sleep 10
+
+mc config host add current https://s3.teatr-stalker.ru OF4IB02NK06AO4XFJ5IA ciLiEqNKsaT2CxuXReVmMB4se0uMjSV5nimV+M9W
+#mc rb --force current/photo
+mc mb current/photo

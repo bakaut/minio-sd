@@ -30,9 +30,9 @@
     "192.168.1.25",
     "192.168.1.26"
   ],
-  "ui": true,
+  "ui": false,
   "bootstrap": false,
-  "client_addr": "0.0.0.0",
+  "client_addr": "127.0.0.1",
   "recursors" : [ "192.168.1.1" ],
   "ports" : {
       "dns" : 53
