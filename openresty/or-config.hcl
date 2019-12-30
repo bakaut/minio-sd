@@ -2,6 +2,7 @@ template {
 source = "/etc/consul-template/or-config.ctmpl"
 destination = "/usr/local/openresty/nginx/conf/upstream.conf"
 perms = 0660
+command = "sudo systemctl reload openresty"
 },
 template {
 source = "/etc/consul-template/or-pub.ctmpl"

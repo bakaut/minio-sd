@@ -15,6 +15,9 @@ echo "* * * * * root consul-template -template \"/etc/consul-template/hosts.ctmp
 
 cp or-reloader.service /etc/systemd/system/or-reloader.service
 
+chown -R root:consul /usr/local/openresty/nginx/conf/
+echo "consul ALL=(ALL) NOPASSWD: /usr/bin/systemctl reload openresty"  >> /etc/sudoers
+
 systemctl daemon-reload && systemctl enable or-reloader && systemctl start or-reloader && systemctl status or-reloader
 
 systemctl status openresty && systemctl enable openresty && systemctl start openresty

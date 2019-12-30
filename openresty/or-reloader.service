@@ -9,9 +9,12 @@ User=root
 Group=root
 LimitNOFILE=64000
 PermissionsStartOnly=true
-ExecStart=/bin/consul-template -syslog -wait 30s:120s -config=/etc/consul-template/or-config.hcl
+ExecStart=/bin/consul-template -syslog -wait 5s -config=/etc/consul-template/or-config.hcl
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGINT
+
+RestartSec=10
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=multi-user.target
