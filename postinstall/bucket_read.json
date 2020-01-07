@@ -1,0 +1,22 @@
+{
+    "Statement": [
+     {
+      "Sid":"read_user",
+      "Action": [
+       "s3:GetBucketLocation",
+       "s3:ListBucketMultipartUploads"
+      ],
+      "Effect": "Allow",
+      "Principal": {
+       "AWS": [
+        "*"
+       ]
+      },
+      "Resource": [
+       "arn:aws:s3:::2020"
+      ]
+     }
+    ],
+    "Version": "2012-10-17"
+   }
+   
