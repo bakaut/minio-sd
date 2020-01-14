@@ -20,6 +20,8 @@ EnvironmentFile=/home/minio/.minio/minio.conf
 
 ExecStartPre=-/usr/bin/chown -R minio:consul /home/minio/.minio/
 
+ExecStartPre=-/usr/bin/sudo /usr/bin/bash /home/minio/disk-tuning.sh
+
 ExecStart=/usr/local/bin/minio server $MINIO_LOG_FORMAT -C $MINIO_CONFIG_DIR --address $MINIO_DNS $MINIO_DISTRIBUTED
 
 # Let systemd restart this service always

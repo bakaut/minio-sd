@@ -43,12 +43,18 @@ sleep 5
 
 systemctl restart minio
 
+#optimize part
 #ls /etc/sysctl.d || mkdir /etc/sysctl.d
 #cp sysctl.conf /etc/sysctl.d/01-minio.conf 
 #sysctl based on 4G RAM server
 #sysctl -p /etc/sysctl.d/01-minio.conf 
+#bash disk-tuning.sh
+#optimize part end
+cp disk-tuning.sh /home/minio/
 
+chown minio:consul /home/minio/disk-tuning.sh
 
+echo "minio ALL=(ALL) NOPASSWD: /usr/bin/bash /home/minio/disk-tuning.sh"  >> /etc/sudoers
 
 firewall-cmd --zone=public --add-port=9000/tcp --permanent
 firewall-cmd --reload

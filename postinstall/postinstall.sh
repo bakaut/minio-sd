@@ -38,5 +38,11 @@ aws --endpoint-url https://s3.teatr-stalker.ru s3api put-object-lock-configurati
   --object-lock-configuration \
   '{ "ObjectLockEnabled": "Enabled", "Rule": { "DefaultRetention": { "Mode": "COMPLIANCE", "Years": 5 }}}'
 
+#mc lock current/2020 compliance 5y
+
 #file folder structure y m for seach
 for i in {1..12};do mc mb --with-lock current/2020/$i/;done
+
+mc admin config set current storage_class standard='EC:4'
+
+mc admin service restart current

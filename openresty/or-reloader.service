@@ -15,6 +15,7 @@ KillSignal=SIGINT
 
 RestartSec=10
 OOMScoreAdjust=-1000
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

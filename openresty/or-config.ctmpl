@@ -1,3 +1,4 @@
 upstream minio_servers { {{range service "minio"}}
   server {{.Node}}:{{.Port}} max_fails=3 fail_timeout=5s;{{end}}
+  least_conn;
 }
