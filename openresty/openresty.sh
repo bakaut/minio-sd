@@ -3,7 +3,7 @@
 #yum install -y yum-utils epel-release
 #yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo
 #yum update -y 
-#yum install openresty openresty-resty -y
+#yum install openresty openresty-resty keepalived -y
 
 #yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 #yum install certbot python2-certbot-nginx -y
@@ -22,9 +22,15 @@ cp limit_req.conf /usr/local/openresty/nginx/conf/limit_req.conf
 #self signed sert
 #openssl req -new -key /usr/local/openresty/nginx/conf/ssl/ssl-priv.key -out /usr/local/openresty/nginx/conf/ssl/ssl-pub.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=teatr-stalker.ru"
 
+cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.back
+rm -rf /etc/keepalived/keepalived.conf
+cp keepalived.conf /etc/keepalived/keepalived.conf
+
+systemctl status keepalived && systemctl enable keepalived && systemctl start keepalived
 
 firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --add-rich-rule='rule protocol value="vrrp" accept' --permanent
 firewall-cmd --reload
 
 #export PATH=ATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/openresty/nginx/sbin/
