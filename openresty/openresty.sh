@@ -14,7 +14,7 @@ cp /usr/local/openresty/nginx/conf/nginx.conf /tmp/
 rm -rf /usr/local/openresty/nginx/conf/nginx.conf
 cp nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 cp upstream.conf /usr/local/openresty/nginx/conf/
-cp proxy_cache_headers.conf /usr/local/openresty/nginx/conf/proxy_cache_headers.conf
+cp proxy_cache_headers.conf proxy_pass.conf /usr/local/openresty/nginx/conf/
 cp proxy_cache.conf /usr/local/openresty/nginx/conf/proxy_cache.conf
 cp limit_req.conf /usr/local/openresty/nginx/conf/limit_req.conf
 
@@ -27,6 +27,7 @@ rm -rf /etc/keepalived/keepalived.conf
 cp keepalived.conf /etc/keepalived/keepalived.conf
 
 systemctl status keepalived && systemctl enable keepalived && systemctl start keepalived
+systemctl enable openresty && systemctl restart openresty
 
 firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --zone=public --add-port=80/tcp --permanent
